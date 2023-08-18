@@ -1,0 +1,29 @@
+{
+  "name": "instabook-api",
+  "version": "1.0.0",
+  "description": "This is a social medai API to demonstrate and practice mongoDB and NoSql.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickSweet1/Instabook-API.git"
+  },
+  "author": "Nick Sweet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickSweet1/Instabook-API/issues"
+  },
+  "homepage": "https://github.com/NickSweet1/Instabook-API#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
