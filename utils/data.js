@@ -73,6 +73,32 @@ const getRandomIndex = (arr) => {
 
 const getRandomThought = () => {
   return getRandomIndex(thoughts);
+}
+
+// const getRandomThought = (int) => {
+//   let results = [];
+//   for (let i = 0; i < int; i++) {
+//     results.push({
+//         thoughtText: getRandomIndex(thoughts)
+//     })
+//   }
+//   return results;
+// };
+
+// const getRandomThought = (int) => {
+//     let thoughtArray = [];
+//     for (i = 0; i < int; i++) {
+//     thoughtArray.push(getRandomIndex(thoughts)) 
+//     }
+//     return thoughtArray;
+// }
+
+const getRandomUser = () => {
+    return getRandomIndex(usernames);
 };
 
-module.exports = { usernames, emails, getRandomThought };
+const getRandomEmail = () => {
+    return getRandomIndex(emails);
+};
+
+module.exports = { usernames, emails, getRandomThought, getRandomUser, getRandomEmail };

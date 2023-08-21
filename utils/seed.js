@@ -23,19 +23,34 @@ connection.once("open", async () => {
     await connection.dropCollection("thoughts");
     console.log("Thoughts collection dropped");
   }
+  const thoughtIds = [];
 
   for (let i = 0; i < usernames.length; i++) {
     const newUser = await User.create({
       username: usernames[i],
       email: emails[i],
     });
-
-    await Thought.create({
+    console.log(newUser);
+    const newThought = await Thought.create({
       thoughtText: getRandomThought(),
       username: newUser.username,
       userId: newUser._id,
+      reactions: [
+        { reactionBody: 'asdfhiuasdf', username: newUser.username },
+      ]
     });
+    thoughtIds.push({ thoughtId: newThought, userId: newUser._id });
   }
+  console.log(thoughtIds);
+
+  for (let  i = 0; i < thoughtIds.length; i++) {
+    await User.findOneAndUpdate(
+      { _id: thoughtIds[i].userId },
+      { $addToSet: { thoughts: [thoughtIds[i].thoughtId]}},
+      { new: true},
+    )
+  }
+  
   console.info("Seeding complete!");
   process.exit(0);
 });

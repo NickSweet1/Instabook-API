@@ -3,6 +3,8 @@ const router = require("express").Router();
 const {
     createReaction,
     deleteReaction,
-} = require('../../controllers/userController');
+} = require('../../controllers/reactionsController');
 
-router.route("/").post(newFriend).delete(deleteFriend);
+router.route("/").post(createReaction).delete(deleteReaction);
+
+module.exports = router;
