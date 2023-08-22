@@ -59,27 +59,29 @@ connection.once("open", async () => {
       ],
     });
 
-    thoughtIds.push({ thoughtId: [newThought1._id, newThought2._id], userId: newUser._id });
+    thoughtIds.push({
+      thoughtId: [newThought1._id, newThought2._id],
+      userId: newUser._id,
+    });
   }
   // console.log(thoughtIds);
   for (let i = 0; i < thoughtIds.length; i++) {
     const userFriends = [getRandomUser(), getRandomUser()];
-    const friend1 = await User.findOne({ username: userFriends[0]});
-    const friend2 = await User.findOne({ username: userFriends[1]});
+    const friend1 = await User.findOne({ username: userFriends[0] });
+    const friend2 = await User.findOne({ username: userFriends[1] });
     const friendIds = [friend1._id, friend2._id];
 
     await User.findOneAndUpdate(
       { _id: thoughtIds[i].userId },
-      { $addToSet: { thoughts: { $each: thoughtIds[i].thoughtId} } },
+      { $addToSet: { thoughts: { $each: thoughtIds[i].thoughtId } } },
       { new: true }
     );
     await User.findOneAndUpdate(
       { _id: thoughtIds[i].userId },
-      { $addToSet: { friends: { $each: friendIds }}},
-      { new: true },
-  )
-
-}
-console.info("Seeding complete!");
-process.exit(0);
+      { $addToSet: { friends: { $each: friendIds } } },
+      { new: true }
+    );
+  }
+  console.info("Seeding complete!");
+  process.exit(0);
 });

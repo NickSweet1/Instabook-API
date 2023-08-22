@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
 const {
-    newFriend,
-    deleteFriend,
-} = require('../../controllers/friendsController');
+  newFriend,
+  deleteFriend,
+} = require("../../controllers/friendsController");
 
 router.route("/").post(newFriend).delete(deleteFriend);
 
