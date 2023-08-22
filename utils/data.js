@@ -65,6 +65,57 @@ const thoughts = [
   "Feeling grateful for the little things in life.",
   "Attended an amazing live concert last night.",
   "Chasing dreams and embracing new challenges.",
+  "New puppy just got here!",
+  "Sometimes we all just need a break.",
+  "I need another chance at that par 4 from this morning.",
+  "Have you ever been more embarassed than I was at the salon today?!",
+  "To Kill a Mockingbird really speaks volumes.",
+  "It's 5:00 somewhere!!",
+];
+
+const reactions = [
+  "This is so you!",
+  "I couldn't agree more.",
+  "I'm with you on this!",
+  'This is gold!',
+  "You've got a point.",
+  'Absolutely!',
+  'Well said!',
+  'Can relate to this.',
+  'Tell us more!',
+  'Inspiring words.',
+  'Great perspective.',
+  'Keep them coming!',
+  'You nailed it!',
+  'Love your insight!',
+  'Couldn\'t have said it better myself.',
+  'This made me think.',
+  'Thanks for sharing your thoughts.',
+  'Impressive.',
+  'You have a gift with words.',
+  'I needed this reminder today.',
+  'Powerful message.',
+  'Your words resonate with me.',
+  'You always put things into words perfectly.',
+  'Your thoughts are on point.',
+  'Brilliantly expressed!',
+  'You have got a way with words.',
+  'You speak the truth.',
+  'Your perspective is refreshing.',
+  'You have a talent for conveying ideas.',
+  'This resonates deeply with me.',
+  'You have captured the essence beautifully.',
+  'Incredible insight!',
+  'Your words are impactful.',
+  'Such profound wisdom!',
+  'You are a master of expression.',
+  'Your words bring clarity.',
+  'Spot-on analysis.',
+  'Your insights are thought-provoking.',
+  'You have hit the mark!',
+  'Your words are truly inspiring.',
+  'You have given me a new perspective.',
+  'Your wisdom shines through.',
 ];
 
 const getRandomIndex = (arr) => {
@@ -75,30 +126,13 @@ const getRandomThought = () => {
   return getRandomIndex(thoughts);
 }
 
-// const getRandomThought = (int) => {
-//   let results = [];
-//   for (let i = 0; i < int; i++) {
-//     results.push({
-//         thoughtText: getRandomIndex(thoughts)
-//     })
-//   }
-//   return results;
-// };
-
-// const getRandomThought = (int) => {
-//     let thoughtArray = [];
-//     for (i = 0; i < int; i++) {
-//     thoughtArray.push(getRandomIndex(thoughts)) 
-//     }
-//     return thoughtArray;
-// }
+const getRandomReaction = () => {
+  return getRandomIndex(reactions);
+}
 
 const getRandomUser = () => {
     return getRandomIndex(usernames);
 };
 
-const getRandomEmail = () => {
-    return getRandomIndex(emails);
-};
 
-module.exports = { usernames, emails, getRandomThought, getRandomUser, getRandomEmail };
+module.exports = { usernames, emails, getRandomThought, getRandomReaction, getRandomUser };

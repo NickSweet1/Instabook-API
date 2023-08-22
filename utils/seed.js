@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 const { User, Thought } = require("../models");
 const connection = require("../config/connection");
-const { usernames, emails, getRandomThought } = require("./data");
+const {
+  usernames,
+  emails,
+  getRandomThought,
+  getRandomReaction,
+  getRandomUser,
+} = require("./data");
 
 connection.on("error", (err) => err);
 
@@ -30,27 +36,41 @@ connection.once("open", async () => {
       username: usernames[i],
       email: emails[i],
     });
-    console.log(newUser);
-    const newThought = await Thought.create({
+    // console.log(newUser);
+    const newThought1 = await Thought.create({
       thoughtText: getRandomThought(),
       username: newUser.username,
       userId: newUser._id,
       reactions: [
-        { reactionBody: 'asdfhiuasdf', username: newUser.username },
-      ]
+        { reactionBody: getRandomReaction(), username: getRandomUser() },
+        { reactionBody: getRandomReaction(), username: getRandomUser() },
+        { reactionBody: getRandomReaction(), username: getRandomUser() },
+      ],
     });
-    thoughtIds.push({ thoughtId: newThought, userId: newUser._id });
-  }
-  console.log(thoughtIds);
 
-  for (let  i = 0; i < thoughtIds.length; i++) {
+    const newThought2 = await Thought.create({
+      thoughtText: getRandomThought(),
+      username: newUser.username,
+      userId: newUser._id,
+      reactions: [
+        { reactionBody: getRandomReaction(), username: getRandomUser() },
+        { reactionBody: getRandomReaction(), username: getRandomUser() },
+        { reactionBody: getRandomReaction(), username: getRandomUser() },
+      ],
+    });
+
+    thoughtIds.push({ thoughtId: [newThought1._id, newThought2._id], userId: newUser._id });
+  }
+  // console.log(thoughtIds);
+
+  for (let i = 0; i < thoughtIds.length; i++) {
     await User.findOneAndUpdate(
       { _id: thoughtIds[i].userId },
-      { $addToSet: { thoughts: [thoughtIds[i].thoughtId]}},
-      { new: true},
-    )
+      { $addToSet: { thoughts: { $each: thoughtIds[i].thoughtId} } },
+      { new: true }
+    );
   }
-  
+
   console.info("Seeding complete!");
   process.exit(0);
 });
