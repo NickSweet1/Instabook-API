@@ -70,7 +70,7 @@ module.exports = {
       }
 
       await Thought.deleteMany({ username: user.username });
-      await user.remove();
+      await user.deleteOne();
       res.json({
         message: `User with id of ${req.params.userId} has been deleted.`,
       });
