@@ -34,13 +34,14 @@ module.exports = {
   async deleteReaction(req, res) {
     try {
       const thoughtId = req.params.thoughtId;
-      const reactionId = req.params.reactionId;
+      const reactionId = req.body.reactionId;
 
-      const updatedThought = await Thought.findByIdAndUpdate(
-        thoughtId,
-        { $pull: { reactions: { _id: reactionId } } }, //pulls the reaction from the thought
+      const updatedThought = await Thought.findOneAndUpdate(
+        { _id: thoughtId},
+        { $pull: { reactions: { reactionId: reactionId } } }, //pulls the reaction from the thought
         { new: true }
       );
+
       if (!updatedThought) {
         return res.json({
           message: `Thought with the id of ${thoughtId} does not exist.`,

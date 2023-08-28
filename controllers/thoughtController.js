@@ -13,7 +13,7 @@ module.exports = {
   },
   async getSingleThought(req, res) {
     try {
-      const thought = await Thought.findOne({ _id: req.params.id });
+      const thought = await Thought.findOne({ _id: req.params.thoughtId });
       if (!thought) {
         return res.json({
           message: `No thought found with an id of ${req.params.id}`,
@@ -40,7 +40,7 @@ module.exports = {
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.id },
+        { _id: req.params.thoughtId },
         { $set: req.body },
         { new: true }
       );
