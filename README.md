@@ -28,7 +28,7 @@
   For any questions or inqueries please reach me at nicksweetj@gmail.com or view my projects at [Github Page](https://github.com/NickSweet1/)! 
 
   ## Contributing<a name="contributing"></a>
-  T ocontribute, please fork the repo. Then add any changes to a new branch and create a pull request. Please include detailed information as to what was changed or added and why. A member of our team will review the PR and approve or deny these changes. 
+  To contribute, please fork the repo. Then add any changes to a new branch and create a pull request. Please include detailed information as to what was changed or added and why. A member of our team will review the PR and approve or deny these changes. 
 
   ## Authors<a name="authors"></a>
   Nick Sweet 
