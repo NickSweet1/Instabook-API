@@ -20,7 +20,7 @@
 
   ## Usage<a name="usage"></a> 
   To use this yourself, clone the repo and run npm run seed to seed the database. Then run npm run dev to open the local server and test all of the api routes. View this video for a demonstration. 
-
+  https://drive.google.com/file/d/1kVegxXUuWvxUN_vmwzz7hLfGGw--PTXT/view
   ## Tests<a name="tests"></a>
   No testing implemented yet. 
 
