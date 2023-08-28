@@ -19,8 +19,8 @@
   You will need mongoDB and insomnia in order to run the api requests yourself. 
 
   ## Usage<a name="usage"></a> 
-  To use this yourself, clone the repo and run npm run seed to seed the database. Then run npm run dev to open the local server and test all of the api routes. View this video for a demonstration. 
-  <iframe src="https://drive.google.com/file/d/1kVegxXUuWvxUN_vmwzz7hLfGGw--PTXT/preview" width="640" height="480"></iframe>
+  To use this yourself, clone the repo and run npm run seed to seed the database. Then run npm run dev to open the local server and test all of the api routes. View this [video](https://drive.google.com/file/d/1kVegxXUuWvxUN_vmwzz7hLfGGw--PTXT/view) for a demonstration. 
+  
   ## Tests<a name="tests"></a>
   No testing implemented yet. 
 
