@@ -56,7 +56,7 @@ module.exports = {
       res.json(updatedUser);
     } catch (err) {
       console.error(err);
-      res.statue(500).json(err);
+      res.status(500).json(err);
     }
   },
   async deleteUser(req, res) {
