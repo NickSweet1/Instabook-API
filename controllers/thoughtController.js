@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongoose").Types;
-const { Thought } = require("../models");
+const { Thought, User } = require("../models");
 
 module.exports = {
   async getAllThoughts(req, res) {
@@ -58,14 +58,22 @@ module.exports = {
   },
   async deleteThought(req, res) {
     try {
-      const thought = await Thought.findOneAndDelete({ _id: req.params.id });
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
       if (!thought) {
         return res.status(404).json({
-          message: `No thought found with the id of ${req.params.id}`,
+          message: `No thought found with the id of ${req.params.thoughtId}`,
         });
       }
+
+      const user = await User.findOne({username: thought.username});
+      
+      if (user) {
+        user.thoughts.pull(thought._id);
+        await user.save()
+      };
+
       res.json(
-        `The thought with a message of: '${thought.thoughtText}' and an id of ${req.params.id} has been deleted.`
+        `The thought with a message of: '${thought.thoughtText}' and an id of ${req.params.thoughtId} has been deleted.`
       );
     } catch (err) {
       console.error(err);
